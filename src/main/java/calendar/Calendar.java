@@ -8,7 +8,7 @@ public class Calendar {
     public Calendar() {}
 
     public String nextDay(int day, int month, int year) throws Exception{
-        if(day <0 || day > 31 || month < 0 || month > 12 || year < 0){
+        if(day <=0 || day > 31 || month <= 0 || month > 12 || year < 0){
             throw new Exception("Verifique los valores ingresados");
         }
         LocalDate fechaActual = LocalDate.of(year, month, day);
