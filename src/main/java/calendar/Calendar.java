@@ -14,7 +14,10 @@ public class Calendar {
         LocalDate fechaActual = LocalDate.of(year, month, day);
         LocalDate fechaSiguiente = fechaActual.plusDays(1);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return fechaSiguiente.format(formatter);
+        String formattedString = fechaSiguiente.format(formatter);
+        if(year==0)
+            formattedString = formattedString.substring(0,formattedString.length()-1) + "0";
+        return formattedString;
     }
 
 }

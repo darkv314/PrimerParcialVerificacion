@@ -1,14 +1,13 @@
-package agenciaVuelos;
+package agenciaVueloStatic;
+
+import agenciaVuelos.AgenciaVuelosService;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class AgenciaVuelos {
-
-    AgenciaVuelosService agenciaVuelosService;
+public class AgenciaVuelosStatic {
     Map<Integer, String> months = new HashMap<>();
-    public AgenciaVuelos(AgenciaVuelosService agenciaVuelosService) {
-        this.agenciaVuelosService = agenciaVuelosService;
+    public AgenciaVuelosStatic() {
         months.put(1, "Enero");
         months.put(2, "Febrero");
         months.put(3, "Marzo");
@@ -27,12 +26,11 @@ public class AgenciaVuelos {
         if(day <=0 || day > 31 || month <= 0 || month > 12 || year < 0 || cantidad <= 0){
             throw new Exception("Verifique los valores ingresados");
         }
-        if(this.agenciaVuelosService.existenPasajes(destino, cantidad)){
-            String weekDay = this.agenciaVuelosService.getDay(day, month, year);
+        if(AgenciaVuelosServiceStatic.existenPasajes(destino, cantidad)){
+            String weekDay = AgenciaVuelosServiceStatic.getDay(day, month, year);
             return "el dia " + weekDay + " " + day + " " + months.get(month) + " " + year + " existen " + cantidad + " pasajes para " + destino;
         }else{
             return "no existen suficientes pasajes para " + destino;
         }
     }
-
 }
